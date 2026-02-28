@@ -28,11 +28,29 @@ class EvoGateway < Formula
     bin.install "evo-gateway"
   end
 
+  def post_install
+    (var/"evo-agents/logs").mkpath
+  end
+
+  service do
+    run [opt_bin/"evo-gateway"]
+    keep_alive true
+    log_path var/"evo-agents/logs/evo-gateway.log"
+    error_log_path var/"evo-agents/logs/evo-gateway.error.log"
+    environment_variables(
+      RUST_LOG: "info",
+    )
+    working_dir var/"evo-agents/data"
+  end
+
   def caveats
     <<~EOS
       evo-gateway proxies LLM API requests to multiple providers.
 
-      Start the server:
+      To run as a background service:
+        brew services start evo-gateway
+
+      Or run manually:
         evo-gateway
 
       Configure providers in gateway.json.
