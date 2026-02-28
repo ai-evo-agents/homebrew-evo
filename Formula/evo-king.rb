@@ -51,6 +51,7 @@ class EvoKing < Formula
       RUST_LOG: "info",
       EVO_LOG_DIR: var/"evo-agents/logs",
       KING_DB_PATH: var/"evo-agents/data/king.db",
+      EVO_DASHBOARD_DIR: share/"evo-king/dashboard",
     )
     working_dir var/"evo-agents/data"
   end
@@ -63,6 +64,9 @@ class EvoKing < Formula
       Logs are written to:
         #{var}/evo-agents/logs/
 
+      Dashboard is served at:
+        http://localhost:3300/
+
       To run as a background service:
         brew services start evo-king
 
@@ -72,6 +76,7 @@ class EvoKing < Formula
       Environment variables:
         KING_PORT           Port for Socket.IO/HTTP server (default: 3300)
         KING_DB_PATH        Path to libSQL database (default: king.db)
+        EVO_DASHBOARD_DIR   Path to dashboard static files
         KERNEL_AGENTS_DIR   Directory containing evo-kernel-agent-* repos
         EVO_LOG_DIR         Log output directory
         EVO_OTLP_ENDPOINT   OTLP endpoint for distributed tracing (optional)
