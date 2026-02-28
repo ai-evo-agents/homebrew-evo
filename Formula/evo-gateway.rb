@@ -1,22 +1,27 @@
 class EvoGateway < Formula
   desc "Multi-provider LLM proxy for the Evo self-evolution agent system"
   homepage "https://github.com/ai-evo-agents/evo-gateway"
-  version "0.2.0"
+  version "0.4.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "a969a391a80e5a4597212c69319b27f474497794b67d47d50d4fd11342a34be4"
+      sha256 "e50dc022940cd5d8c22bf1c513e4cde888c3c9bb8b18756dd8789e81c4a077aa"
     else
       url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "a74a495cd36d57d214fc84dbd0fe6ee4a3d88836f2ec97f5caf4c9b21d8ba301"
+      sha256 "6e75958c3e560e76c32ba4aa035865b3c4bbf63018b7cbba97fe8269844b3900"
     end
   end
 
   on_linux do
-    url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "67653aaec131f8075a81ec87c327aacc8a663faa669257fc21eebf3e5303bc87"
+    if Hardware::CPU.arm?
+      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "fbd66a8df997db1a1a55eb52bf7a79bd699630b893747670d2c32808a7d6a0e8"
+    else
+      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "37148076ba49112fd342cf3c970707c461d5842b116d8c68ca265192a3220127"
+    end
   end
 
   def install
@@ -36,6 +41,7 @@ class EvoGateway < Formula
         OPENAI_API_KEY      OpenAI API key
         ANTHROPIC_API_KEY   Anthropic API key
         RUST_LOG            Log level (default: info)
+        EVO_OTLP_ENDPOINT   OTLP endpoint for distributed tracing (optional)
     EOS
   end
 
