@@ -1,26 +1,26 @@
 class EvoKing < Formula
   desc "Central orchestrator for the Evo self-evolution agent system"
   homepage "https://github.com/ai-evo-agents/evo-king"
-  version "0.3.3"
+  version "0.5.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "93ddaee00b85ee77f748d2ddd84cbb2944728d633dd0802fe7b1dd85507e2295"
+      sha256 "cb087b7227a76892825d70bf55dac832b45999a16878c23c942e055f27dfbf39"
     else
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "77c07afa8487407b1286377244203b56a3d0be828080811c236488fd041ef66b"
+      sha256 "5c6f0ec018c179717b311a3ebdcf5e19eb12ea213af915ff42c002b260ab62d5"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "b72186fa630e83d1ea619071f371d5048735ab198ed4efa54d6dc3c35576254d"
+      sha256 "148f760e10f0b4d0bdf87282ca7cf4337468a4187746b31a99772b0f7a82b2c5"
     else
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "b96ba451f79881a329ff31b0940c5baefe733676ac7ee40cff66e658db8cfee9"
+      sha256 "5630901b467e6286d7563a0080468d6336a083997c0a7457ed9621acfec23137"
     end
   end
 
@@ -60,6 +60,7 @@ class EvoKing < Formula
         KING_DB_PATH        Path to libSQL database (default: king.db)
         KERNEL_AGENTS_DIR   Directory containing evo-kernel-agent-* repos
         EVO_LOG_DIR         Log output directory
+        EVO_OTLP_ENDPOINT   OTLP endpoint for distributed tracing (optional)
     EOS
   end
 
