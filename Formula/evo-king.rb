@@ -27,21 +27,32 @@ class EvoKing < Formula
   def install
     bin.install "evo-king"
 
-    # Install run.sh and update.sh if present in the archive
     prefix.install "run.sh" if File.exist?("run.sh")
     (var/"evo-agents/data").install "update.sh" if File.exist?("update.sh")
 
-    # Install dashboard if present
     if File.directory?("dashboard")
       (share/"evo-king/dashboard").install Dir["dashboard/*"]
     end
   end
 
   def post_install
-    # Create data and log directories
     (var/"evo-agents/data").mkpath
     (var/"evo-agents/data/backups").mkpath
     (var/"evo-agents/logs").mkpath
+  end
+
+  service do
+    run [opt_bin/"evo-king"]
+    keep_alive true
+    log_path var/"evo-agents/logs/evo-king.log"
+    error_log_path var/"evo-agents/logs/evo-king.error.log"
+    environment_variables(
+      KING_PORT: "3300",
+      RUST_LOG: "info",
+      EVO_LOG_DIR: var/"evo-agents/logs",
+      KING_DB_PATH: var/"evo-agents/data/king.db",
+    )
+    working_dir var/"evo-agents/data"
   end
 
   def caveats
@@ -52,7 +63,10 @@ class EvoKing < Formula
       Logs are written to:
         #{var}/evo-agents/logs/
 
-      Start the server:
+      To run as a background service:
+        brew services start evo-king
+
+      Or run manually:
         evo-king
 
       Environment variables:
