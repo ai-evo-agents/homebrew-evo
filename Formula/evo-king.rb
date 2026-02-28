@@ -51,7 +51,7 @@ class EvoKing < Formula
       RUST_LOG: "info",
       EVO_LOG_DIR: var/"evo-agents/logs",
       KING_DB_PATH: var/"evo-agents/data/king.db",
-      EVO_DASHBOARD_DIR: share/"evo-king/dashboard",
+      EVO_DASHBOARD_DIR: HOMEBREW_PREFIX/"share/evo-king/dashboard",
     )
     working_dir var/"evo-agents/data"
   end
