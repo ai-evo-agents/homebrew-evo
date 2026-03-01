@@ -1,26 +1,26 @@
 class EvoGateway < Formula
   desc "Multi-provider LLM proxy for the Evo self-evolution agent system"
   homepage "https://github.com/ai-evo-agents/evo-gateway"
-  version "0.4.0"
+  version "0.5.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "e50dc022940cd5d8c22bf1c513e4cde888c3c9bb8b18756dd8789e81c4a077aa"
+      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v\#{version}/evo-gateway-v\#{version}-aarch64-apple-darwin.tar.gz"
+      sha256 "8b570b380e4a49002e4ece07b2d78b7e28195609ec1baf5133a1e5ef8d3527d6"
     else
-      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "6e75958c3e560e76c32ba4aa035865b3c4bbf63018b7cbba97fe8269844b3900"
+      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v\#{version}/evo-gateway-v\#{version}-x86_64-apple-darwin.tar.gz"
+      sha256 "ec2cc149c91e726985a63123818115031122db8f6ea6bb90731404959a25784f"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "fbd66a8df997db1a1a55eb52bf7a79bd699630b893747670d2c32808a7d6a0e8"
+      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v\#{version}/evo-gateway-v\#{version}-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "fc44e3f6a1f09a25abf63d3db27312522b09234d18e3775ef175559bac7416c7"
     else
-      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "37148076ba49112fd342cf3c970707c461d5842b116d8c68ca265192a3220127"
+      url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v\#{version}/evo-gateway-v\#{version}-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "b79b26a5a959ea1bde50b9853b4292574ff86180f8ed035cb6d9f76e3bac0cad"
     end
   end
 
@@ -64,6 +64,6 @@ class EvoGateway < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/evo-gateway --version")
+    assert_match version.to_s, shell_output("\#{bin}/evo-gateway --version")
   end
 end
