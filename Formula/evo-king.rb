@@ -1,26 +1,26 @@
 class EvoKing < Formula
   desc "Central orchestrator for the Evo self-evolution agent system"
   homepage "https://github.com/ai-evo-agents/evo-king"
-  version "0.5.0"
+  version "0.6.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "cb087b7227a76892825d70bf55dac832b45999a16878c23c942e055f27dfbf39"
+      sha256 "6383e16ce8517e7825a78964e643979403e9279b1c27cf5e1c9cd9b1abf948db"
     else
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "5c6f0ec018c179717b311a3ebdcf5e19eb12ea213af915ff42c002b260ab62d5"
+      sha256 "19fbd56c7b25f8cbb56f9dcd32b805b7e8a4d49de94a2616dc83572b4e05186f"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "148f760e10f0b4d0bdf87282ca7cf4337468a4187746b31a99772b0f7a82b2c5"
+      sha256 "b224133eb7d0f7b9294b333f144fd380c2259e86b36b6adbc5e15f2ef806b904"
     else
       url "https://github.com/ai-evo-agents/evo-king/releases/download/v#{version}/evo-king-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "5630901b467e6286d7563a0080468d6336a083997c0a7457ed9621acfec23137"
+      sha256 "9b294728c53da81b0c9bcf3ef9711eb21acb690b2f96ba366ddcbf3c275094e3"
     end
   end
 
