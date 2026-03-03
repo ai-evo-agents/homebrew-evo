@@ -1,26 +1,26 @@
 class EvoGateway < Formula
   desc "Multi-provider LLM proxy for the Evo self-evolution agent system"
   homepage "https://github.com/ai-evo-agents/evo-gateway"
-  version "0.7.3"
+  version "0.7.4"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "ef20d907ae4554faf0a405bd9512d9e6d8350ee8a363ec71d33fc4c7725a8175"
+      sha256 "74b9699fc33b3d2587ea26445f89413b1b28629c91163e178d04cb973a6170fb"
     else
       url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "97fa6c8139b9137b1833d192a20ff150bda2fffa5e9119342ca87626da606619"
+      sha256 "8d40ac3ed0754ad6b98d438418b0c5ec76fc9a95b9d6b5d2932dbf7dacf5af1a"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "f7f195b6d6430130bbef6177828b58a47aeb851d969b65b52552ec063b478776"
+      sha256 "bda20d6a735d2dcd4b1524ef61bf593013b2392a47fef00702655d014f4eab96"
     else
       url "https://github.com/ai-evo-agents/evo-gateway/releases/download/v#{version}/evo-gateway-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "da75103010740395384dfbb149d8a4545866cf95b07bc3983ca9fbcc4d0544a9"
+      sha256 "b08f8149a58eac07457666ce925b014a3c254eb9e4d87b770d6cd3c777b00263"
     end
   end
 
